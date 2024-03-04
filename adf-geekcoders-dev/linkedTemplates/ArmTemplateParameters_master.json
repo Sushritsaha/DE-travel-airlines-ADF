@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-geekcoders-dev"
+		},
+		"LS_AzSqlDB_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sqldb-source-server.database.windows.net;Initial Catalog=sqlDB-geekcoders-sourceDB;User ID=sql_db_source_admin"
+		},
+		"LS_RestAPI_airline_source_properties_typeProperties_url": {
+			"value": "https://airlabs.co/api/v9/airlines"
+		},
+		"ls_ADLS_sink_properties_typeProperties_url": {
+			"value": "https://geekcodersdldev.dfs.core.windows.net/"
+		},
+		"ls_ADLS_sink_properties_typeProperties_tenant": {
+			"value": "616cb9be-7023-4562-b1a6-d3129e763f3e"
+		},
+		"ls_ADLS_sink_properties_typeProperties_servicePrincipalId": {
+			"value": "dccefa24-185d-4e2a-8967-f081e35dfda3"
+		},
+		"ls_ADLS_source_properties_typeProperties_url": {
+			"value": "https://geekcodersdlsource.dfs.core.windows.net/"
+		},
+		"ls_ADLS_source_properties_typeProperties_tenant": {
+			"value": "616cb9be-7023-4562-b1a6-d3129e763f3e"
+		},
+		"ls_ADLS_source_properties_typeProperties_servicePrincipalId": {
+			"value": "dccefa24-185d-4e2a-8967-f081e35dfda3"
+		},
+		"ls_AzureKeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://kv-geekcoders-dev.vault.azure.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,106 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-geekcoders-dev"
+		},
+		"LS_AzSqlDB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_AzSqlDB'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sqldb-source-server.database.windows.net;Initial Catalog=sqlDB-geekcoders-sourceDB;User ID=sql_db_source_admin"
+		},
+		"LS_RestAPI_airline_source_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://airlabs.co/api/v9/airlines"
+		},
+		"ls_ADLS_sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://geekcodersdldev.dfs.core.windows.net/"
+		},
+		"ls_ADLS_sink_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "616cb9be-7023-4562-b1a6-d3129e763f3e"
+		},
+		"ls_ADLS_sink_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "dccefa24-185d-4e2a-8967-f081e35dfda3"
+		},
+		"ls_ADLS_source_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://geekcodersdlsource.dfs.core.windows.net/"
+		},
+		"ls_ADLS_source_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "616cb9be-7023-4562-b1a6-d3129e763f3e"
+		},
+		"ls_ADLS_source_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "dccefa24-185d-4e2a-8967-f081e35dfda3"
+		},
+		"ls_AzureKeyVault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-geekcoders-dev.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-geekcoders-dev_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_AzSqlDB_connectionString": {
+						"value": "[parameters('LS_AzSqlDB_connectionString')]"
+					},
+					"LS_RestAPI_airline_source_properties_typeProperties_url": {
+						"value": "[parameters('LS_RestAPI_airline_source_properties_typeProperties_url')]"
+					},
+					"ls_AzureKeyVault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_AzureKeyVault_properties_typeProperties_baseUrl')]"
+					},
+					"ls_ADLS_sink_properties_typeProperties_url": {
+						"value": "[parameters('ls_ADLS_sink_properties_typeProperties_url')]"
+					},
+					"ls_ADLS_sink_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_ADLS_sink_properties_typeProperties_tenant')]"
+					},
+					"ls_ADLS_sink_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ls_ADLS_sink_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ls_ADLS_source_properties_typeProperties_url": {
+						"value": "[parameters('ls_ADLS_source_properties_typeProperties_url')]"
+					},
+					"ls_ADLS_source_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_ADLS_source_properties_typeProperties_tenant')]"
+					},
+					"ls_ADLS_source_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ls_ADLS_source_properties_typeProperties_servicePrincipalId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
