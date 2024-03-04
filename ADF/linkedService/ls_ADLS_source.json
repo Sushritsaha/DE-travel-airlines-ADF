@@ -1,0 +1,22 @@
+{
+	"name": "ls_ADLS_source",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://geekcodersdlsource.dfs.core.windows.net/",
+			"tenant": "616cb9be-7023-4562-b1a6-d3129e763f3e",
+			"servicePrincipalId": "dccefa24-185d-4e2a-8967-f081e35dfda3",
+			"servicePrincipalCredentialType": "ServicePrincipalKey",
+			"servicePrincipalCredential": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "app-registration-secret"
+			}
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name": "adf-geekcoders-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1413aaa9-3735-4385-853d-0c0f92a3cf98",
+		"tenantId": "616cb9be-7023-4562-b1a6-d3129e763f3e"
+	}
+}
